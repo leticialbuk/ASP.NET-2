@@ -1,0 +1,6 @@
+C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.csproj.AssemblyReference.cache
+C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.AssemblyInfoInputs.cache
+C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.AssemblyInfo.cs
+C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.csproj.CoreCompileInputs.cache
+C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.MvcApplicationPartsAssemblyInfo.cache
