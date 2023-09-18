@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Conrollers\NovaPasta\**" />
+    <Content Remove="Conrollers\NovaPasta\**" />
+    <EmbeddedResource Remove="Conrollers\NovaPasta\**" />
+    <None Remove="Conrollers\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
       <PrivateAssets>all</PrivateAssets>
