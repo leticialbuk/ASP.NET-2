@@ -61,7 +61,26 @@ namespace Blog_2.Conrollers
             context.Categories.Update(category);
             await context.SaveChangesAsync();
 
-            return Created($"v1/categories/{model.Id}", model);
+            return Ok(model);
+        }
+
+        [HttpDelete("v1/categories/{id:int}")]
+        public async Task<IActionResult> DeleteAsync(
+            [FromRoute] int id,
+            [FromServices] BlogDataContext context)
+        {
+            var category = await context
+                .Categories.
+                FirstOrDefaultAsync(x => x.Id == id);
+
+            if (category == null)
+                return NotFound();
+
+
+            context.Categories.Remove(category);
+            await context.SaveChangesAsync();
+
+            return Ok(category);
         }
     }
 }
