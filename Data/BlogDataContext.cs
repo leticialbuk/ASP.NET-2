@@ -11,7 +11,8 @@ namespace Blog.Data
         public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=localhost,1433;Database=Blog2;");
+            => options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Blog2;Trusted_Connection=True;TrustServerCertificate=True");
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

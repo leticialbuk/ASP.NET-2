@@ -36,10 +36,21 @@ namespace Blog_2.Conrollers
             [FromBody] Category model,
             [FromServices] BlogDataContext context)
         {
-            await context.Categories.AddAsync(model);
-            await context.SaveChangesAsync();
+            try 
+            {
+                await context.Categories.AddAsync(model);
+                await context.SaveChangesAsync();
 
-            return Created($"v1/categories/{model.Id}", model);
+                return Created($"v1/categories/{model.Id}", model);
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, "Ops! Não foi possível incluir a categoria");
+            }
+            catch (Exception e) 
+            {
+                return StatusCode(500, "Falha interna do servidor");
+            }
         }
 
         [HttpPut("v1/categories/{id:int}")]
