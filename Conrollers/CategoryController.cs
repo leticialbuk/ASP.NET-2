@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Blog_2.Extensions;
 using Blog_2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,15 @@ namespace Blog_2.Conrollers
         public async Task<IActionResult> GetAsync(
             [FromServices] BlogDataContext context)
         {
-            var categories = await context.Categories.ToListAsync();
-            return Ok(categories);
+            try
+            {
+                var categories = await context.Categories.ToListAsync();
+                return Ok(new ResultViewModel<List<Category>>(categories));
+            }
+            catch
+            {
+                return StatusCode(500, value: new ResultViewModel<List<Category>>("Falha interna no servidor"));
+            }   
         }
 
         [HttpGet("v1/categories/{id:int}")]
@@ -22,23 +30,30 @@ namespace Blog_2.Conrollers
             [FromRoute] int id,
             [FromServices] BlogDataContext context)
         {
-            var category = await context
+            try
+            {
+                var category = await context
                 .Categories.
                 FirstOrDefaultAsync(x => x.Id == id);
 
-            if (category == null)
-                return NotFound();
+                if (category == null)
+                    return NotFound(new ResultViewModel<Category>("Conteúdo não encontrado"));
 
-            return Ok(category);
+                return Ok(new ResultViewModel<Category>(category));
+            }
+            catch 
+            {
+                return StatusCode(500, value: new ResultViewModel<Category>("Falha interna no servidor"));    
+            }
+
         }
-
         [HttpPost("v1/categories")]
         public async Task<IActionResult> PostAsync(
             [FromBody] EditorCategoryViewModel model,
             [FromServices] BlogDataContext context)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(new ResultViewModel<Category>(ModelState.GetErrors()));
 
             try 
             {
@@ -51,15 +66,15 @@ namespace Blog_2.Conrollers
                 await context.Categories.AddAsync(category);
                 await context.SaveChangesAsync();
 
-                return Created($"v1/categories/{category.Id}", category);
+                return Created($"v1/categories/{category.Id}", new ResultViewModel<Category>(category));
             }
             catch (DbUpdateException ex)
             {
-                return StatusCode(500, "Ops! Não foi possível incluir a categoria");
+                return StatusCode(500, new ResultViewModel<Category>("Não foi possível incluir a categoria "));
             }
             catch (Exception e) 
             {
-                return StatusCode(500, "Falha interna do servidor");
+                return StatusCode(500, new ResultViewModel<Category>("Falha interna do servidor"));
             }
         }
 
@@ -74,7 +89,7 @@ namespace Blog_2.Conrollers
                 FirstOrDefaultAsync(x => x.Id == id);
 
             if (category == null)
-                return NotFound();
+                return NotFound(new ResultViewModel<Category>("Conteúdo não encontrado"));
 
             category.Name = model.Name;
             category.Slug = model.Slug;
@@ -82,7 +97,7 @@ namespace Blog_2.Conrollers
             context.Categories.Update(category);
             await context.SaveChangesAsync();
 
-            return Ok(model);
+            return Ok(new ResultViewModel<Category>(category));
         }
 
         [HttpDelete("v1/categories/{id:int}")]
@@ -95,13 +110,13 @@ namespace Blog_2.Conrollers
                 FirstOrDefaultAsync(x => x.Id == id);
 
             if (category == null)
-                return NotFound();
+                return NotFound(new ResultViewModel<Category>("Conteúdo não encontrado"));
 
 
             context.Categories.Remove(category);
             await context.SaveChangesAsync();
 
-            return Ok(category);
+            return Ok(new ResultViewModel<Category>(category));
         }
     }
 }
