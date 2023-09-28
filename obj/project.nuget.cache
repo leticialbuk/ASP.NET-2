@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "yGZ3XBYS1Ahp0doOx4NDrN8CLM0bF1vryZImZLikwELvTN18RHqwlGa03Zhl3O8zb98yClJyzH0aaSAVCNHDlw==",
+  "dgSpecHash": "nKdbdq/GkS1MCiqg2HifMFaFSKRZFtOyKA40VJFQoCOstTX9oCLyuicimDu8e3rD62xJsPNetJScN+giZOLD+Q==",
   "success": true,
   "projectFilePath": "C:\\Dev\\Blog-2\\Blog-2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\letic\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\letic\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\letic\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\letic\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.11\\microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",
     "C:\\Users\\letic\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\letic\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\letic\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
