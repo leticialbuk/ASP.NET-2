@@ -74,3 +74,4 @@ C:\Dev\Blog-2\obj\Debug\net7.0\refint\Blog-2.dll
 C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.pdb
 C:\Dev\Blog-2\obj\Debug\net7.0\Blog-2.genruntimeconfig.cache
 C:\Dev\Blog-2\obj\Debug\net7.0\ref\Blog-2.dll
+C:\Dev\Blog-2\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
