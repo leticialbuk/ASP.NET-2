@@ -17,6 +17,7 @@ namespace Blog_2.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new (ClaimTypes.Name, "leicialbuk"),
+                    new (ClaimTypes.Role, "user"),
                     new (ClaimTypes.Role, "admin"),
                     new ("fruta", "melancia") //exmeplo de claim em token
                 }),
