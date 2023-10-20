@@ -48,7 +48,7 @@ namespace Blog_2.Conrollers
             }
             catch
             {
-                return StatusCode(400, new ResultViewModel<string>("Falha interna no servidor"));
+                return StatusCode(500, new ResultViewModel<string>("Falha interna no servidor"));
             }
         }
             
